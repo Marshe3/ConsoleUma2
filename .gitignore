@@ -34,3 +34,6 @@ x86/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+
+# 로컬 문서 (깃에 올리지 않음)
+코드설명.md

@@ -13,10 +13,8 @@ protected:
 public:
     Player(int spd, int stm, int pow, int guts, int intl, std::string name);
 
-    int getHp() const
-    {
-        return hp;
-    }
+    int getHp() const { return hp; }
+    int getMaxHp() const { return maxHp; }
 
     std::string getCharacterName() const
     {
@@ -26,6 +24,7 @@ public:
     const std::string getName() const { return characterName; }
     
     void reduceHP(int amount);
+    void reduceHp(int amount) { reduceHP(amount); }
     void recoverHp(int amount);
     
     // hp에 따른 트레이닝 성공도
