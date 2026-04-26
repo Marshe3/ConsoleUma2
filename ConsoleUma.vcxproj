@@ -154,7 +154,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Character.cpp" />
+    <ClCompile Include="src\ConsoleRenderer.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Npc.cpp" />
+    <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\Race.cpp" />
+    <ClCompile Include="src\Skill.cpp" />
+    <ClCompile Include="src\SkillSlot.cpp" />
+    <ClCompile Include="src\Training.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Character.h" />
+    <ClInclude Include="src\ConsoleRenderer.h" />
+    <ClInclude Include="src\Npc.h" />
+    <ClInclude Include="src\Player.h" />
+    <ClInclude Include="src\Race.h" />
+    <ClInclude Include="src\Skill.h" />
+    <ClInclude Include="src\SkillSlot.h" />
+    <ClInclude Include="src\Training.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
