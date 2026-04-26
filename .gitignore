@@ -1,5 +1,36 @@
-bin/
-obj/
+# Visual Studio
+.vs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+
+# General
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Compiled Object files
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.lib
+*.dll
+
+# Others
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
