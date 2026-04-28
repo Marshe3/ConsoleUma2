@@ -32,13 +32,20 @@ struct RaceEntry {
 class Race {
     std::string courseName;
     std::string weather;
+    std::string grade;
+    std::string venue;
+    std::string surface;
     int distance;
 
 public:
     Race(std::string courseName, std::string weather, int distance);
+    Race(std::string courseName, std::string grade, std::string venue, std::string surface, std::string weather, int distance);
 
     const std::string& getCourseName() const { return courseName; }
     const std::string& getWeather()    const { return weather; }
+    const std::string& getGrade()      const { return grade; }
+    const std::string& getVenue()      const { return venue; }
+    const std::string& getSurface()    const { return surface; }
     int                getDistance()   const { return distance; }
 
     RaceResult run(const std::vector<RaceEntry>& entries) const;

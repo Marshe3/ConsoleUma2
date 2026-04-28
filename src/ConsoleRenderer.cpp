@@ -70,7 +70,7 @@ void ConsoleRenderer::drawCharacterSelect() {
     std::cout << " > ";
 }
 
-void ConsoleRenderer::drawMainScreen(const Player& uma) {
+void ConsoleRenderer::drawMainScreen(const Player& uma, const std::string& dateText) {
     clearScreen();
 
     // ASCII Art 영역
@@ -81,6 +81,7 @@ void ConsoleRenderer::drawMainScreen(const Player& uma) {
 
     // 캐릭터 정보
     std::cout << line() << "\n";
+    std::cout << " 날짜  : " << dateText << "\n";
     std::cout << " 이름  : " << uma.getName() << "\n";
     std::cout << " HP    : " << hpBar(uma.getHp(), uma.getMaxHp())
               << "  " << uma.getHp() << "/" << uma.getMaxHp() << "\n";
@@ -107,6 +108,34 @@ void ConsoleRenderer::drawTrainingMenu() {
     std::cout << line('-') << "\n";
     std::cout << "  [1] 스피드   [2] 스테미너   [3] 파워\n";
     std::cout << "  [4] 근성     [5] 지능       [0] 뒤로\n";
+    std::cout << line() << "\n";
+    std::cout << " > ";
+}
+
+void ConsoleRenderer::drawRaceMenu(const std::string& dateText, const std::vector<Race>& races) {
+    clearScreen();
+    std::cout << line() << "\n";
+    std::cout << "  Race Entry  -  " << dateText << "\n";
+    std::cout << line('-') << "\n";
+
+    if (races.empty()) {
+        std::cout << "  No available races this turn.\n";
+        std::cout << line() << "\n";
+        waitAnyKey();
+        return;
+    }
+
+    for (size_t i = 0; i < races.size(); i++) {
+        const Race& race = races[i];
+        std::cout << "  [" << (i + 1) << "] ";
+        if (!race.getGrade().empty()) std::cout << race.getGrade() << " ";
+        std::cout << race.getCourseName()
+                  << "  " << race.getVenue()
+                  << "  " << race.getSurface()
+                  << "  " << race.getDistance() << "m\n";
+    }
+
+    std::cout << "  [0] Back\n";
     std::cout << line() << "\n";
     std::cout << " > ";
 }

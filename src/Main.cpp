@@ -1,47 +1,48 @@
 #include <iostream>
+#include <algorithm>
 #include <memory>
 #include <random>
 #include <vector>
 #include <conio.h>
+#include "AgnesTachyon.h"
 #include "ConsoleRenderer.h"
+#include "GameDate.h"
+#include "ManhattanCafe.h"
+#include "Npc.h"
 #include "Player.h"
 #include "Training.h"
 #include "Race.h"
+#include "RaceSchedule.h"
+
+using namespace std;
 
 static const int RACE_HP_COST = 25;
 
 static int rollRestHp() {
-    static std::mt19937 rng(std::random_device{}());
+    static mt19937 rng(random_device{}());
     static const int options[] = { 30, 50, 70 };
-    std::uniform_int_distribution<int> d(0, 2);
+    uniform_int_distribution<int> d(0, 2);
     return options[d(rng)];
 }
 
-static const std::vector<std::string> NPC_NAMES = {
-    "단츠 플레임", "메이쇼 도토", "히시 미라클", "티엠 오페라 오", "정글포켓"
-};
-
-static std::unique_ptr<Player> selectCharacter() {
+static unique_ptr<Player> selectCharacter() {
     while (true) {
         ConsoleRenderer::drawCharacterSelect();
         char c = static_cast<char>(_getch());
-        if (c == '1') return std::make_unique<Player>(72, 63, 68, 62, 88, "아그네스 타키온");
-        if (c == '2') return std::make_unique<Player>(66, 85, 72, 80, 68, "맨하탄 카페");
+        if (c == '1') return make_unique<AgnesTachyon>();
+        if (c == '2') return make_unique<ManhattanCafe>();
     }
 }
 
-static std::vector<RaceEntry> buildEntries(const Player& uma) {
-    std::mt19937 rng(std::random_device{}());
-    std::uniform_int_distribution<int> d(50, 85);
-
-    std::vector<RaceEntry> entries;
+static vector<RaceEntry> buildEntries(const Player& uma) {
+    vector<RaceEntry> entries;
 
     entries.push_back({ uma.getName(), true,
                         uma.getSpeed(), uma.getStamina(), uma.getPower(),
                         uma.getGuts(), uma.getIntelligence() });
 
-    for (const auto& name : NPC_NAMES)
-        entries.push_back({ name, false, d(rng), d(rng), d(rng), d(rng), d(rng) });
+    for (const auto& opponent : Npc::createRaceOpponents())
+        entries.push_back(opponent.createRaceEntry());
 
     return entries;
 }
@@ -50,9 +51,10 @@ int main() {
     ConsoleRenderer::init();
 
     auto uma = selectCharacter();
+    GameDate date;
 
     while (true) {
-        ConsoleRenderer::drawMainScreen(*uma);
+        ConsoleRenderer::drawMainScreen(*uma, date.getDisplayName());
         char input = static_cast<char>(_getch());
 
         if (input == 'q' || input == 'Q') break;
@@ -75,25 +77,39 @@ int main() {
 
             TrainingResult result = Training::execute(*uma, type);
             ConsoleRenderer::drawTrainingResult(result);
+            date.advance();
         }
 
         // --- 휴식 ---
         else if (input == '2') {
             int restHp = rollRestHp();
-            int gained = std::min(restHp, uma->getMaxHp() - uma->getHp());
+            int gained = min(restHp, uma->getMaxHp() - uma->getHp());
             uma->recoverHp(restHp);
             ConsoleRenderer::drawRestResult(gained);
+            date.advance();
         }
 
         // --- 경주 ---
         else if (input == '3') {
-            Race race("나카야마", "맑음", 2000);
+            vector<Race> races = RaceSchedule::getAvailableRaces(date);
+            ConsoleRenderer::drawRaceMenu(date.getDisplayName(), races);
+
+            if (races.empty()) continue;
+
+            char rc = static_cast<char>(_getch());
+            if (rc == '0') continue;
+
+            int raceIndex = rc - '1';
+            if (raceIndex < 0 || raceIndex >= static_cast<int>(races.size())) continue;
+
+            Race race = races[raceIndex];
             auto entries = buildEntries(*uma);
             RaceResult result = race.run(entries);
 
             uma->reduceHp(RACE_HP_COST);
 
             ConsoleRenderer::drawRaceResult(race, result);
+            date.advance();
         }
     }
 

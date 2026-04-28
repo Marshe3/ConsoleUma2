@@ -96,7 +96,16 @@ static std::vector<PhaseRanking> resolvePhase(std::vector<Participant>& ps, Race
 // -------------------------------------------------------
 
 Race::Race(std::string name, std::string weather, int distance)
-    : courseName(std::move(name)), weather(std::move(weather)), distance(distance)
+    : Race(std::move(name), "", "", "Turf", std::move(weather), distance)
+{}
+
+Race::Race(std::string name, std::string grade, std::string venue, std::string surface, std::string weather, int distance)
+    : courseName(std::move(name))
+    , weather(std::move(weather))
+    , grade(std::move(grade))
+    , venue(std::move(venue))
+    , surface(std::move(surface))
+    , distance(distance)
 {}
 
 RaceResult Race::run(const std::vector<RaceEntry>& entries) const {
