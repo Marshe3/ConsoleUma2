@@ -1,10 +1,13 @@
 #include "Player.h"
+#include <algorithm>
 #include <string>
 using namespace std;
-Player::Player(int spd, int stm, int pow, int guts, int intl, string name)
+Player::Player(int spd, int stm, int pow, int guts, int intl, string name, RunningStyle style, string skillName)
     : Character(spd, stm, pow, guts, intl)
     , hp(maxHp)
     , characterName(name)
+    , runningStyle(style)
+    , uniqueSkillName(skillName)
 {}
 
 void Player::reduceHP(int amount)

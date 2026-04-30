@@ -34,14 +34,15 @@ static unique_ptr<Player> selectCharacter() {
     }
 }
 
-static vector<RaceEntry> buildEntries(const Player& uma) {
+static vector<RaceEntry> buildEntries(const Player& uma, const GameDate& date) {
     vector<RaceEntry> entries;
 
     entries.push_back({ uma.getName(), true,
                         uma.getSpeed(), uma.getStamina(), uma.getPower(),
-                        uma.getGuts(), uma.getIntelligence() });
+                        uma.getGuts(), uma.getIntelligence(),
+                        uma.getRunningStyle(), uma.getUniqueSkillName() });
 
-    for (const auto& opponent : Npc::createRaceOpponents())
+    for (const auto& opponent : Npc::createRaceOpponents(date))
         entries.push_back(opponent.createRaceEntry());
 
     return entries;
@@ -103,7 +104,7 @@ int main() {
             if (raceIndex < 0 || raceIndex >= static_cast<int>(races.size())) continue;
 
             Race race = races[raceIndex];
-            auto entries = buildEntries(*uma);
+            auto entries = buildEntries(*uma, date);
             RaceResult result = race.run(entries);
 
             uma->reduceHp(RACE_HP_COST);

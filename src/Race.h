@@ -3,6 +3,7 @@
 #include <vector>
 
 enum class RacePhase { EARLY, MID, LATE, FINAL };
+enum class RunningStyle { ESCAPE, PACE, LATE, END };
 
 struct PhaseRanking {
     std::string name;
@@ -10,11 +11,36 @@ struct PhaseRanking {
     bool isPlayer;
 };
 
+struct RaceRunnerState {
+    std::string name;
+    bool isPlayer;
+    int rank;
+    int trackPosition;
+    int coursePosition;
+    int lap;
+    int totalLaps;
+    int lane;
+    int staminaPercent;
+    float speed;
+    RunningStyle style;
+    bool blocked;
+    bool wide;
+    bool uniqueSkillActive;
+    std::string uniqueSkillName;
+};
+
+struct RaceMoment {
+    std::string title;
+    std::string commentary;
+    std::vector<RaceRunnerState> runners;
+};
+
 struct RaceResult {
     std::vector<PhaseRanking> earlyRanks;
     std::vector<PhaseRanking> midRanks;
     std::vector<PhaseRanking> lateRanks;
     std::vector<PhaseRanking> finalRanks;
+    std::vector<RaceMoment> moments;
     int playerFinalRank;
     int totalParticipants;
 };
@@ -27,6 +53,8 @@ struct RaceEntry {
     int power;
     int guts;
     int intelligence;
+    RunningStyle style;
+    std::string uniqueSkillName;
 };
 
 class Race {
@@ -51,4 +79,5 @@ public:
     RaceResult run(const std::vector<RaceEntry>& entries) const;
 
     static std::string getPhaseName(RacePhase phase);
+    static std::string getRunningStyleName(RunningStyle style);
 };
