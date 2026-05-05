@@ -1,5 +1,5 @@
 #include "ManhattanCafe.h"
 
 ManhattanCafe::ManhattanCafe()
-    : Player(66, 85, 72, 80, 68, "맨하탄 카페", RunningStyle::LATE, "그대를 좇아서")
+    : Player(76, 95, 82, 90, 78, "Manhattan Cafe", RunningStyle::LATE, "I Like Its Shadow")
 {}

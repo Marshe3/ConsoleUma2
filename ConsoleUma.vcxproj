@@ -168,6 +168,7 @@
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\Race.cpp" />
     <ClCompile Include="src\RaceSchedule.cpp" />
+    <ClCompile Include="src\RatingBoard.cpp" />
     <ClCompile Include="src\Training.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +181,7 @@
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\Race.h" />
     <ClInclude Include="src\RaceSchedule.h" />
+    <ClInclude Include="src\RatingBoard.h" />
     <ClInclude Include="src\Training.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

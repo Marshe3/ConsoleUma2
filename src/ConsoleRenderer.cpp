@@ -1,5 +1,6 @@
 #include "ConsoleRenderer.h"
 #include "Player.h"
+#include "RatingBoard.h"
 #include "Training.h"
 
 #include <algorithm>
@@ -397,15 +398,15 @@ void ConsoleRenderer::drawCharacterSelect()
     setColor(UiColor::Highlight);
     cout << "  [1] 아그네스 타키온\n";
     resetColor();
-    cout << "      각질 도주   고유기 U=ma2\n";
-    cout << "      SPD 72  STA 63  PWR 68  GTS 62  INT 88\n";
+    cout << "      각질 선행   고유기 U=ma2\n";
+    cout << "      SPD 82  STA 73  PWR 78  GTS 72  INT 98\n";
     cout << "      빠른 전개와 지능으로 초중반 흐름을 잡습니다.\n\n";
 
     setColor(UiColor::Highlight);
     cout << "  [2] 맨하탄 카페\n";
     resetColor();
     cout << "      각질 추입   고유기 그대를 좇아서\n";
-    cout << "      SPD 66  STA 85  PWR 72  GTS 80  INT 68\n";
+    cout << "      SPD 76  STA 95  PWR 82  GTS 90  INT 78\n";
     cout << "      체력과 뒷심으로 마지막 직선에서 추격합니다.\n";
 
     printLine('=');
@@ -439,6 +440,7 @@ void ConsoleRenderer::drawMainScreen(const Player& uma, const string& dateText)
     printCommandCard('1', "훈련", "능력치를 올리고 체력을 소모합니다.");
     printCommandCard('2', "휴식", "체력을 회복하고 다음 턴으로 넘어갑니다.");
     printCommandCard('3', "레이스", "현재 일정의 레이스에 출전합니다.");
+    printCommandCard('4', "랭킹", "현재 레이팅 순위를 확인합니다.");
     printCommandCard('q', "종료", "게임을 종료합니다.");
     printLine('=');
     printPrompt();
@@ -656,6 +658,85 @@ void ConsoleRenderer::drawRaceResult(const Race& course, const RaceResult& resul
     else
     {
         cout << "  최종 " << result.playerFinalRank << "위. 다음 레이스를 위해 더 단련합시다.\n";
+    }
+
+    if (result.statReward.earned)
+    {
+        printLine('-');
+        setColor(UiColor::Good);
+        cout << "  Race bonus: top " << result.statReward.rank << " stat reward\n";
+        resetColor();
+        printGain("SPD", result.statReward.speedGain);
+        printGain("STA", result.statReward.staminaGain);
+        printGain("PWR", result.statReward.powerGain);
+        printGain("GTS", result.statReward.gutsGain);
+        printGain("INT", result.statReward.intelligenceGain);
+    }
+
+    printLine('=');
+    waitAnyKey();
+}
+
+void ConsoleRenderer::drawRatingResult(const vector<RatingEntry>& rankings)
+{
+    clearScreen();
+    printTitle("레이팅 랭킹", "레이스 반영 완료");
+
+    if (rankings.empty())
+    {
+        cout << "  아직 레이팅 기록이 없습니다.\n";
+        printLine('=');
+        waitAnyKey();
+        return;
+    }
+
+    cout << "  순위  이름                   레이팅   변동\n";
+    printLine('-');
+
+    int shown = 0;
+    bool playerShown = false;
+    for (const auto& entry : rankings)
+    {
+        bool showPlayerAfterTop = entry.isPlayer && !playerShown && shown >= 10;
+        if (shown >= 10 && !showPlayerAfterTop) continue;
+
+        if (showPlayerAfterTop)
+        {
+            setColor(UiColor::Dim);
+            cout << "  ...\n";
+            resetColor();
+        }
+
+        if (entry.rank == 1) setColor(UiColor::Highlight);
+        else if (entry.isPlayer) setColor(UiColor::Accent);
+        else resetColor();
+
+        cout << "  " << setw(3) << entry.rank << "  "
+             << left << setw(20) << shortName(entry.name) << right
+             << setw(6) << entry.rating << "   ";
+
+        if (entry.change > 0)
+        {
+            setColor(UiColor::Good);
+            cout << "+" << entry.change;
+        }
+        else if (entry.change < 0)
+        {
+            setColor(UiColor::Danger);
+            cout << entry.change;
+        }
+        else
+        {
+            setColor(UiColor::Dim);
+            cout << "0";
+        }
+
+        resetColor();
+        if (entry.isPlayer) cout << "  <선택 캐릭터>";
+        cout << "\n";
+
+        shown++;
+        playerShown = playerShown || entry.isPlayer;
     }
 
     printLine('=');

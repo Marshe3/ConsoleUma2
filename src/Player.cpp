@@ -23,9 +23,9 @@ void Player::recoverHp(int amount)
 float Player::getTrainingFail() const
 {
     float remainderHp = static_cast<float>(hp) / maxHp;
-    if (remainderHp > 0.8f)
+    if (hp >= 80)
     {
-        return 0.05f;
+        return 0.0f;
     }else if (remainderHp > 0.5f)
     {
         return 0.20f;

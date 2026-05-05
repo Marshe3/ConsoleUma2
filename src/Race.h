@@ -35,12 +35,23 @@ struct RaceMoment {
     std::vector<RaceRunnerState> runners;
 };
 
+struct RaceStatReward {
+    bool earned = false;
+    int rank = 0;
+    int speedGain = 0;
+    int staminaGain = 0;
+    int powerGain = 0;
+    int gutsGain = 0;
+    int intelligenceGain = 0;
+};
+
 struct RaceResult {
     std::vector<PhaseRanking> earlyRanks;
     std::vector<PhaseRanking> midRanks;
     std::vector<PhaseRanking> lateRanks;
     std::vector<PhaseRanking> finalRanks;
     std::vector<RaceMoment> moments;
+    RaceStatReward statReward;
     int playerFinalRank;
     int totalParticipants;
 };

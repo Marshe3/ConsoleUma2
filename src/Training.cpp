@@ -31,24 +31,24 @@ TrainingResult Training::execute(Player& uma, TrainingType type) {
 
     switch (type) {
     case TrainingType::SPEED:
-        result.speedGain        = roll(3, 8);
-        result.staminaGain      = roll(0, 2);
+        result.speedGain        = roll(10, 14);
+        result.staminaGain      = roll(6, 6);
         break;
     case TrainingType::STAMINA:
-        result.staminaGain      = roll(3, 8);
-        result.powerGain        = roll(0, 2);
+        result.staminaGain      = roll(10, 14);
+        result.powerGain        = roll(6, 6);
         break;
     case TrainingType::POWER:
-        result.powerGain        = roll(3, 8);
-        result.speedGain        = roll(0, 2);
+        result.powerGain        = roll(10, 14);
+        result.speedGain        = roll(6, 6);
         break;
     case TrainingType::GUTS:
-        result.gutsGain         = roll(3, 8);
-        result.staminaGain      = roll(0, 2);
+        result.gutsGain         = roll(10, 14);
+        result.staminaGain      = roll(6, 6);
         break;
     case TrainingType::INTELLIGENCE:
-        result.intelligenceGain = roll(3, 8);
-        result.gutsGain         = roll(0, 2);
+        result.intelligenceGain = roll(10, 14);
+        result.gutsGain         = roll(6, 6);
         break;
     }
 

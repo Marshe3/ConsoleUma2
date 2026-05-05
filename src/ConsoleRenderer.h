@@ -6,6 +6,7 @@
 #include <vector>
 
 struct TrainingResult;
+struct RatingEntry;
 class Player;
 
 class ConsoleRenderer {
@@ -20,6 +21,7 @@ public:
     static void drawTrainingResult(const TrainingResult& result);
     static void drawRestResult(int hpGained);
     static void drawRaceResult(const Race& course, const RaceResult& result);
+    static void drawRatingResult(const std::vector<RatingEntry>& rankings);
 
     static void waitAnyKey();
 };

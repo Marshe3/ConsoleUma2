@@ -6,6 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="f0eca987-6815-425c-b22b-505a6e53943c" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsoleUma/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsoleUma/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsoleUma.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleUma.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsoleUma.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleUma.vcxproj.filters" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AgnesTachyon.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/AgnesTachyon.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ConsoleRenderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConsoleRenderer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ConsoleRenderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConsoleRenderer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ManhattanCafe.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ManhattanCafe.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ManhattanCafe.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/ManhattanCafe.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Npc.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Npc.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Npc.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Npc.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Race.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Race.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RaceSchedule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/RaceSchedule.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Training.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Training.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +85,7 @@
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -107,6 +122,7 @@
       <workItem from="1777249274523" duration="5651000" />
       <workItem from="1777354705616" duration="12126000" />
       <workItem from="1777508761540" duration="4883000" />
+      <workItem from="1777989943902" duration="2465000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 캐릭터 클래스 개편 레이스 종류 및 날짜 추가">
       <option name="closed" value="true" />

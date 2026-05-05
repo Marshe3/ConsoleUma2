@@ -62,6 +62,25 @@ namespace
             { 2, 11, false, Race("재팬컵", "G1", "도쿄", "Turf", "Sunny", 2400) },
             { 2, 12, true, Race("챔피언스컵", "G1", "주쿄", "Dirt", "Sunny", 1800) },
             { 2, 12, false, Race("아리마 기념", "G1", "나카야마", "Turf", "Sunny", 2500) },
+            { 0, 7, true,  Race("Junior Dirt Sprint", "OP", "Funabashi", "Dirt", "Sunny", 1200) },
+            { 0, 9, false, Race("Autumn Dirt Dash", "OP", "Tokyo", "Dirt", "Cloudy", 1400) },
+            { 0, 10, false, Race("Junior Challenge Cup", "OP", "Kyoto", "Turf", "Sunny", 1800) },
+
+            { 1, 1, false, Race("New Year Dirt OP", "OP", "Nakayama", "Dirt", "Sunny", 1800) },
+            { 1, 2, false, Race("Classic Dirt Sprint", "OP", "Hanshin", "Dirt", "Cloudy", 1400) },
+            { 1, 4, true,  Race("Spring Dirt Trial", "OP", "Tokyo", "Dirt", "Sunny", 1600) },
+            { 1, 6, true,  Race("June Open Mile", "OP", "Tokyo", "Turf", "Rainy", 1600) },
+            { 1, 7, true,  Race("Summer Dirt Cup", "OP", "Chukyo", "Dirt", "Sunny", 1700) },
+            { 1, 8, false, Race("Sapporo Open", "OP", "Sapporo", "Turf", "Cloudy", 2000) },
+            { 1, 10, true, Race("October Dirt OP", "OP", "Kyoto", "Dirt", "Sunny", 1800) },
+
+            { 2, 1, false, Race("Senior Dirt OP", "OP", "Nakayama", "Dirt", "Sunny", 1800) },
+            { 2, 3, true,  Race("March Open Stakes", "OP", "Hanshin", "Turf", "Cloudy", 1800) },
+            { 2, 4, true,  Race("April Dirt Mile", "OP", "Tokyo", "Dirt", "Rainy", 1600) },
+            { 2, 5, false, Race("May Open Cup", "OP", "Kyoto", "Turf", "Sunny", 2000) },
+            { 2, 7, true,  Race("Procyon Dirt OP", "OP", "Chukyo", "Dirt", "Sunny", 1400) },
+            { 2, 8, false, Race("Summer Open Stakes", "OP", "Sapporo", "Turf", "Sunny", 2000) },
+            { 2, 10, true, Race("Autumn Dirt Classic", "OP", "Tokyo", "Dirt", "Cloudy", 2100) },
         };
 
         return races;

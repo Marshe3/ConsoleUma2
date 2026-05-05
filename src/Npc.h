@@ -17,5 +17,5 @@ public:
 
     RaceEntry createRaceEntry() const;
 
-    static std::vector<Npc> createRaceOpponents(const GameDate& date);
+    static std::vector<Npc> createRaceOpponents(const GameDate& date, int opponentCount = 5);
 };

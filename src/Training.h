@@ -22,7 +22,7 @@ struct TrainingResult {
 class Player;
 
 class Training {
-    static const int HP_COST = 20;
+    static const int HP_COST = 15;
 
     static int roll(int min, int max);
     static bool checkFailure(float rate);
